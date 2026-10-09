@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; media-src 'self' file: blob:; img-src 'self' data: blob:; script-src 'self'; style-src 'self'">
+  <title>Player</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+  <aside class="sidebar">
+    <div class="sb-head">
+      <span class="sb-label">Library</span>
+      <button class="add-btn" id="add-btn" aria-label="Add tracks" title="Add tracks">+</button>
+    </div>
+    <div class="track-list" id="track-list">
+      <div class="empty">
+        <div class="empty-icon">◎</div>
+        <p>Drop audio files here<br>or press + to add tracks</p>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="player">
+
+      <div class="art-wrap" id="art-wrap">
+        <div class="art-glow"></div>
+        <canvas class="art-ph" id="art-ph" width="210" height="210"></canvas>
+        <img id="art-img" src="" alt="" style="display:none">
+      </div>
+
+      <div class="meta">
+        <div class="meta-title"  id="meta-title">—</div>
+        <div class="meta-artist" id="meta-artist">No track loaded</div>
+      </div>
+
+      <div class="wave-wrap">
+        <canvas id="wave"></canvas>
+      </div>
+
+      <div class="prog-wrap">
+        <div class="prog-bar" id="prog-bar">
+          <div class="prog-fill" id="prog-fill"></div>
+        </div>
+        <div class="prog-times">
+          <span id="t-cur">0:00</span>
+          <span id="t-tot">0:00</span>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="cbtn" id="shuffle-btn" aria-label="Shuffle" title="Shuffle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 3 21 3 21 8"/>
+            <polyline points="16 21 21 21 21 16"/>
+            <path d="M4 20 21 3"/>
+            <path d="M21 21 15.5 15.5M4 4l4.5 4.5"/>
+          </svg>
+        </button>
+        <button class="cbtn" id="prev-btn" aria-label="Previous">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/>
+          </svg>
+        </button>
+        <button class="play-btn" id="play-btn" aria-label="Play">
+          <svg id="ico-play"  width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <svg id="ico-pause" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+        </button>
+        <button class="cbtn" id="next-btn" aria-label="Next">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6 18l8.5-6L6 6v12zm2-8.3L12 12l-4 2.3V9.7zM16 6h2v12h-2z"/>
+          </svg>
+        </button>
+        <button class="cbtn" id="repeat-btn" aria-label="Repeat" title="Repeat: off">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="17 1 21 5 17 9"/><polyline points="7 23 3 19 7 15"/>
+            <path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="vol-row">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+        </svg>
+        <input type="range" id="vol" min="0" max="1" step="0.02" value="0.8" aria-label="Volume">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+        </svg>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<div class="drop-ol" id="drop-ol">Drop to add tracks</div>
+
+<script src="renderer.js"></script>
+</body>
+</html>

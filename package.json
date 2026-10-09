@@ -1,0 +1,13 @@
+{
+  "name": "player",
+  "version": "1.0.0",
+  "description": "Audio player",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "electron": "^31.0.0",
+    "music-metadata": "^10.2.0"
+  }
+}
